@@ -18,5 +18,8 @@ if text != "":
             movieFound = True
         if movieFound:
             break
-    st.text(movie_names[movieIndex])
-    st.text(movie_trailers[movieIndex])
+    if movieIndex == -1:
+        st.text("no movies found")
+    else:
+        st.text(movie_names[movieIndex])
+        st.text(movie_trailers[movieIndex])
