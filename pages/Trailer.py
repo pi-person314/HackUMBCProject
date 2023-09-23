@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 
-text = st.text_input("Input name of movie", "Movie Name")
+text = st.text_input("Input name of movie")
 
-if text != "Movie Name":
+if text != "":
     movies = pd.read_csv("movies.csv")
     movie_names = movies.name
     trailers = movies.trailer
