@@ -3,6 +3,21 @@ import pandas as pd
 
 text = st.text_input("Input name of movie")
 
-if text == "Rise of Skywalker":
-    st.header('Trailer: Rise of Skywalker')
-    st.video('https://youtu.be/8Qn_spdM5Zg?si=k3hSMV_Suzh8MmL_')
+movies = pd.read_csv("movies.csv")
+movie_names = movies.name
+trailers = movies.trailer
+movieInput = text.split()
+movieIndex = -1
+for i in range(len(movies)):
+    st.text(i)
+    currentMovie = movie_names[i].split()
+    rightMovie = True
+    for j in movieInput:
+        breakOut = False
+        for k in currentMovie:
+            if j not in k:
+                rightMovie = False
+    if not rightMovie:
+        movieIndex = i
+        break
+st.text(movieIndex)
