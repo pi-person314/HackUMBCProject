@@ -12,4 +12,4 @@ st.write('Your movie is: ', title)
 
 st.dataframe(df)
 movies = pd.read_csv('movies.csv')
-print('We have ' + len(movies) + ' movies')
+print('We have ' + str(len(movies)) + ' movies')
