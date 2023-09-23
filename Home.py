@@ -1,12 +1,8 @@
 import streamlit as st
 import pandas as pd
 
-#Styling
-primaryColor="#FFFFFF"
-backgroundColor="#FFFFFF"
-secondaryBackgroundColor="#FFFFFF"
-textColor="#FFFFFF"
-font="sans serif"
+st.markdown('<link rel="stylesheet" href="assets/styles.css">', unsafe_allow_html=True)
+
 
 df = pd.DataFrame({
   'first column': [1, 2, 3, 4],
@@ -14,3 +10,5 @@ df = pd.DataFrame({
 })
 
 df
+
+st.dataframe(df)
