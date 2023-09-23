@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 
 #Styling
-primaryColor="#F63366"
+primaryColor="#FFFFFF"
 backgroundColor="#FFFFFF"
-secondaryBackgroundColor="#F0F2F6"
-textColor="#262730"
+secondaryBackgroundColor="#FFFFFF"
+textColor="#FFFFFF"
 font="sans serif"
 
 df = pd.DataFrame({
