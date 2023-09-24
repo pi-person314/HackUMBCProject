@@ -44,7 +44,7 @@ def generate_predictions(data):
     model.add(Dense(units=1))
 
     model.compile(optimizer='adam', loss='mean_squared_error')
-    model.fit(x_train, y_train, epochs=2, batch_size=32)
+    model.fit(x_train, y_train, epochs=10, batch_size=32)
 
     total_length = len(scaled_data)
     x_test = []
@@ -62,18 +62,19 @@ def display_stock_info(df):
     df_until_2018 = df[df['date'] <= '2018-12-31']
     known_data = df_until_2018.iloc[:-len(df_until_2018)//2]
     ai_prediction_data = df_until_2018.iloc[-len(df_until_2018)//2:]
+    df_until_2016 = df[df['date'] <= '2016-02-08']
     
     predicted_values = generate_predictions(known_data)
 
     # Plotting AI predictions along with the original first half
     fig_predictions = go.Figure()
-    fig_predictions.add_trace(go.Scatter(x=known_data['date'], y=known_data['close'], mode='lines', name='Original Data'))
+    fig_predictions.add_trace(go.Scatter(x=df_until_2016['date'], y=df_until_2016['close'], mode='lines', name='Original Data'))
     fig_predictions.add_trace(go.Scatter(x=ai_prediction_data['date'], y=predicted_values.reshape(-1), mode='lines', name='AI Predictions'))
     st.plotly_chart(fig_predictions, use_container_width=True)
     
     # Plotting original data and AI predictions together
     fig_original = go.Figure()
-    fig_original.add_trace(go.Scatter(x=df_until_2018['date'], y=df_until_2018['close'], mode='lines', name='Full Original Data'))
+    fig_original.add_trace(go.Scatter(x=df_until_2016['date'], y=df_until_2016['close'], mode='lines', name='Full Original Data'))
     st.plotly_chart(fig_original, use_container_width=True)
 
 def display_intro():
