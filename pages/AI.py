@@ -71,11 +71,6 @@ def display_stock_info(df):
     fig_predictions.add_trace(go.Scatter(x=df_until_2016['date'], y=df_until_2016['close'], mode='lines', name='Original Data'))
     fig_predictions.add_trace(go.Scatter(x=ai_prediction_data['date'], y=predicted_values.reshape(-1), mode='lines', name='AI Predictions'))
     st.plotly_chart(fig_predictions, use_container_width=True)
-    
-    # Plotting original data and AI predictions together
-    fig_original = go.Figure()
-    fig_original.add_trace(go.Scatter(x=df_until_2016['date'], y=df_until_2016['close'], mode='lines', name='Full Original Data'))
-    st.plotly_chart(fig_original, use_container_width=True)
 
 def display_intro():
     pass  # Placeholder for your intro display function
