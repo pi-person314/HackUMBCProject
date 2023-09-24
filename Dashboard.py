@@ -1,9 +1,8 @@
 import os
 import pandas as pd
 import streamlit as st
-from path import Path
 
-stock_datasets = os.listdir(r'C:\Users\piper\OneDrive\Desktop\web-app-dev\HackUMBCProject\stocks')
+stock_datasets = os.listdir("stocks")
 st.header("Dashboard")
 ticker = st.text_input("Enter a stock ticker")
 for dataset in stock_datasets:
