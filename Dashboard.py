@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.graph_objects as go
 
 stock_datasets = os.listdir("spstocks")
-st.header("Search for Stocks")
+st.header("Compare Two Stocks")
 
 ticker = st.text_input("Enter a stock ticker in the S&P 500")
 ticker2 = st.text_input("Enter another stock ticker in the S&P 500")
