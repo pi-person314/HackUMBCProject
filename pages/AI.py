@@ -88,10 +88,11 @@ def main():
     user_input = st.text_input('Enter a Valid stock Ticker')
     if (user_input != ""):
         try:
-            df = load_stock_data(user_input)
-            if df is None:
-                raise InvalidTickerError(f"No data found for ticker: {user_input}")
-            display_stock_info(df)
+            with st.spinner('Generating graphs'):
+                df = load_stock_data(user_input)
+                if df is None:
+                    raise InvalidTickerError(f"No data found for ticker: {user_input}")
+                display_stock_info(df)
         except InvalidTickerError as e:
             st.error(str(e))
 
