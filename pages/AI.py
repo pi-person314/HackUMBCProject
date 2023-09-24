@@ -84,14 +84,15 @@ def main():
     display_intro()
 
     st.subheader('- Closing Price')
-    user_input = st.text_input('Enter a Valid stock Ticker', 'MSFT')
-    try:
-        df = load_stock_data(user_input)
-        if df is None:
-            raise InvalidTickerError(f"No data found for ticker: {user_input}")
-        display_stock_info(df)
-    except InvalidTickerError as e:
-        st.error(str(e))
+    user_input = st.text_input('Enter a Valid stock Ticker')
+    if (user_input != ""):
+        try:
+            df = load_stock_data(user_input)
+            if df is None:
+                raise InvalidTickerError(f"No data found for ticker: {user_input}")
+            display_stock_info(df)
+        except InvalidTickerError as e:
+            st.error(str(e))
 
 if __name__ == "__main__":
     main()
