@@ -3,7 +3,6 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 import plotly.graph_objs as go
-import requests
 
 class InvalidTickerError(Exception):
     pass
@@ -64,12 +63,13 @@ def main():
     display_intro()
 
     st.subheader('- Closing Price')
-    user_input = st.text_input('Enter a Valid stock Ticker', 'MSFT')
-    try:
-        df = get_data(user_input, '2010-01-01', datetime.now())
-        display_stock_info(df)
-    except InvalidTickerError as e:
-        st.error(str(e))
+    user_input = st.text_input('Enter a Valid stock Ticker')
+    if user_input != "":
+        try:
+            df = get_data(user_input, '2010-01-01', datetime.now())
+            display_stock_info(df)
+        except InvalidTickerError as e:
+            st.error(str(e))
 
 if __name__ == "__main__":
     main()
